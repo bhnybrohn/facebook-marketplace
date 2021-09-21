@@ -3,7 +3,8 @@ const app = express();
 
 import morgan from "morgan";
 import Job from "node-cron";
-import axios from "axios";
+import dotenv from 'dotenv'
+dotenv.config()
 
 import { faceBookGraph, sendMail } from "./modules.js";
 

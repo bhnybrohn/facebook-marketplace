@@ -1,5 +1,9 @@
 import fetch from "node-fetch";
 import nodemailer from "nodemailer";
+import {google } from 'googleapis'
+
+import dotenv from 'dotenv'
+dotenv.config()
 
 const faceBookGraph = async () => {
   try {
@@ -29,6 +33,7 @@ const faceBookGraph = async () => {
           data.node.listing.creation_time * 1000
         ).toLocaleDateString(),
       };
+      
       return info;
     });
     return mappedData;
@@ -38,22 +43,54 @@ const faceBookGraph = async () => {
   }
 };
 
+
 const sendMail = async (data) => {
+  
+
+  //   //Send Verification Token
+  //   const CLIENT_ID = "845947566314-jbpab92akuv2bt4r2ldmjaqlle4ffpcl.apps.googleusercontent.com"
+  //   const CLIENT_SECRET = "FrHYjk--l-KmrACLRE4dZnHA"
+  //   const REDIRECT_URI = "https://developers.google.com/oauthplayground"
+  //   const REFRESH_TOKEN = "1//04S8SBNVgrjiTCgYIARAAGAQSNwF-L9Ir67EUWF0olAdZ4RFJ-EtFlI1XviXTMAD5UHRi_9JEymH9bk82F6vsB2ytBs7DNx1WpSA"
+  
+  //   const oAuth2Client = new google.auth.OAuth2(
+  //     CLIENT_ID,
+  //     CLIENT_SECRET,
+  //     REDIRECT_URI
+  //   );
+  
+  //   oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+  
+  //   const accesstoken = await oAuth2Client.getAccessToken();
+  
+  // const transporter = nodemailer.createTransport({
+  //   service: "gmail",
+  //   auth: {
+  //     type: "OAuth2",
+  //     user: "smyxbrone@gmail.com",
+  //     clientId: CLIENT_ID,
+  //     clientSecret: CLIENT_SECRET,
+  //     refreshToken: REFRESH_TOKEN,
+  //     accessToken: accesstoken,
+  //   },
+  // });
+
   const transporter = nodemailer.createTransport({
-    host: "email-smtp.us-east-1.amazonaws.com",
-    port: 465,
+    host: 'mail.privateemail.com',
+    port: 587,
+    secure: false, // true for 465, false for other ports
     auth: {
-      user: "AKIAUOJ5TESKEANANFLC", // generated ethereal user
-      pass: "BNMYViLooVcvpIULvFobeZ4pKTb+K12F/6LErD2+EXum", // generated ethereal password
+      user: 'hello@figopayment.com', // generated ethereal user
+      pass: 'Figomanager@100Callers' // generated ethereal password
     },
     tls: {
-      rejectUnauthorized: true,
-    },
-  });
+      rejectUnauthorized: false
+    }
+  })
 
   const message = {
-    from: `${"Listings Alert"} <admin@lokhator.com>`,
-    to: "smyxbrone@gmail.com",
+    from: `${"Listings Alert"} <hello@figopayment.com>`,
+    to: "Leia@SellMyHouseFastOrlandoFl.com ",
     subject: "Orlando Listings",
     html: `<!DOCTYPE html>	
     <html lang="en">
