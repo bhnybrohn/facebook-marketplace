@@ -20,20 +20,13 @@ const faceBookGraphRent = async () => {
           data: config.home,
           method: "post",
         }),
-         axios(config.url, {
-          headers: config.headers,
-          data: config.home_for_rent,
-          method: "post",
-        }),
       ])
       .then(
         axios.spread(
-          (data1,data2,data3 ) => {
+          (data1,data2 ) => {
             const data = [
                 ...data1.data.data.marketplace_search.feed_units.edges,
                 ...data2.data.data.marketplace_search.feed_units.edges,
-                ...data3.data.data.marketplace_search.feed_units.edges,
-               
               ];
               const mappedData = data.map((data) => {
                   let info = {
