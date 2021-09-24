@@ -19,6 +19,9 @@ app.get("/", (req, res) => {
 
 });
 
+Job.schedule("*/30 * * * * *", ()=>{
+  console.log("Job is Running");
+})
 
 Job.schedule("*/1 * * * *", async () => {
   
