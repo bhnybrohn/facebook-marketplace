@@ -56,7 +56,7 @@ Job.schedule("*/1 * * * *", async () => {
   });
 });
 
-const port = process.env.ENV || 3000;
+const port = process.env.ENV || 8000;
 app.listen(port, () => {
   console.log("Job running 3000!");
 });
