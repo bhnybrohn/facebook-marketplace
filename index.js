@@ -6,7 +6,6 @@ import Job from "node-cron";
 import dotenv from "dotenv";
 dotenv.config();
 
-import fetch from "node-fetch";
 
 import { faceBookGraphSale, sendSaleMail } from "./jobs/sale.js";
 import { faceBookGraphRent, sendRentMail } from "./jobs/rent.js";
@@ -29,7 +28,7 @@ Job.schedule("*/1 * * * *", async () => {
   const SaleData = await faceBookGraphSale();
   const RentData = await faceBookGraphRent();
  
-  // console.log(SaleData, RentData) 
+  console.log(SaleData, RentData) 
 
   //present time and date
   const time = new Date();
@@ -59,7 +58,7 @@ Job.schedule("*/1 * * * *", async () => {
   });
 });
 
-const port = process.env.ENV || 3000;
+const port = process.env.ENV || 8000;
 app.listen(port, () => {
   console.log("Job running 3000!");
 });
