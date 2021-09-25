@@ -50,7 +50,6 @@ Job.schedule("* * * * * *", async () => {
 
   //map through listings
   RentData.map((list) => {
-    console.log(list)
     const listingDate = Date.parse(list.date);
     if (listingDate > start && listingDate < end) {
       console.log('Found Rent')

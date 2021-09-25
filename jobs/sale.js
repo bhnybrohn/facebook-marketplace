@@ -45,7 +45,6 @@ const faceBookGraphSale = async () => {
       ])
       .then(
         axios.spread((data1, data2, data3, data4,data5, data6 ) => {
-
           const data = [
             ...data1.data?.data?.marketplace_search?.feed_units?.edges,
             ...data2.data?.data?.marketplace_search?.feed_units?.edges,
@@ -74,6 +73,7 @@ const faceBookGraphSale = async () => {
             };
             return info;
           });
+          console.log(mappedData)
             return mappedData;
         })
       )
