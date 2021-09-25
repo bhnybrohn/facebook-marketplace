@@ -45,13 +45,14 @@ const faceBookGraphSale = async () => {
       ])
       .then(
         axios.spread((data1, data2, data3, data4,data5, data6 ) => {
+
           const data = [
-            ...data1.data?.data?.marketplace_search?.feed_unit?.edges,
-            ...data2.data?.data?.marketplace_search?.feed_unit?.edges,
-            ...data3.data?.data?.marketplace_search?.feed_unit?.edges,
-            ...data4.data?.data?.marketplace_search?.feed_unit?.edges,
-            ...data5.data?.data?.marketplace_search?.feed_unit?.edges,
-            ...data6.data?.data?.marketplace_search?.feed_unit?.edges,
+            ...data1.data?.data?.marketplace_search?.feed_units?.edges,
+            ...data2.data?.data?.marketplace_search?.feed_units?.edges,
+            ...data3.data?.data?.marketplace_search?.feed_units?.edges,
+            ...data4.data?.data?.marketplace_search?.feed_units?.edges,
+            ...data5.data?.data?.marketplace_search?.feed_units?.edges,
+            ...data6.data?.data?.marketplace_search?.feed_units?.edges,
           ];
 
           const mappedData = data.map((data) => {
@@ -73,10 +74,9 @@ const faceBookGraphSale = async () => {
             };
             return info;
           });
-       
-          return mappedData;
+            return mappedData;
         })
-      );
+      )
   } catch (error) {
     console.log("Error happened", error);
     return error;

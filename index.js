@@ -22,13 +22,13 @@ Job.schedule("*/30 * * * * *", ()=>{
   console.log("Job is Running");
 })
 
-Job.schedule("*/1 * * * *", async () => {
+Job.schedule("* * * * * *", async () => {
   
   //data from facebook queries
   const SaleData = await faceBookGraphSale();
   const RentData = await faceBookGraphRent();
  
-  console.log(SaleData, RentData) 
+
 
   //present time and date
   const time = new Date();
@@ -50,6 +50,7 @@ Job.schedule("*/1 * * * *", async () => {
 
   //map through listings
   RentData.map((list) => {
+    console.log(list)
     const listingDate = Date.parse(list.date);
     if (listingDate > start && listingDate < end) {
       console.log('Found Rent')

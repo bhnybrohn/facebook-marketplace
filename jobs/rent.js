@@ -48,7 +48,7 @@ const faceBookGraphRent = async () => {
                   return info;
                 }
               );
-            
+        
               return mappedData;
           }
         )
