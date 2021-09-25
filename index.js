@@ -22,13 +22,11 @@ Job.schedule("*/30 * * * * *", ()=>{
   console.log("Job is Running");
 })
 
-Job.schedule("* * * * * *", async () => {
+Job.schedule("*/1 * * * *", async () => {
   
   //data from facebook queries
   const SaleData = await faceBookGraphSale();
   const RentData = await faceBookGraphRent();
- 
-
 
   //present time and date
   const time = new Date();
@@ -58,7 +56,7 @@ Job.schedule("* * * * * *", async () => {
   });
 });
 
-const port = process.env.ENV || 8000;
+const port = process.env.ENV || 3000;
 app.listen(port, () => {
   console.log("Job running 3000!");
 });

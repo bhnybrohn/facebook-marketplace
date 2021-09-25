@@ -73,7 +73,7 @@ const faceBookGraphSale = async () => {
             };
             return info;
           });
-          console.log(mappedData)
+          
             return mappedData;
         })
       )

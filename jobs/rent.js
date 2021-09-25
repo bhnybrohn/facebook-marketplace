@@ -16,6 +16,7 @@ const faceBookGraphRent = async () => {
           method: "post",
         }),
          axios(config.url, {
+          
           headers: config.headers,
           data: config.apartment_for_rent,
           method: "post",
@@ -23,7 +24,8 @@ const faceBookGraphRent = async () => {
       ])
       .then(
         axios.spread(
-          (data1, data2 ) => {
+          (data1, data2 ) => {  
+   
             const data = [
                 ...data1.data.data?.marketplace_search?.feed_units?.edges,
                 ...data2.data.data?.marketplace_search?.feed_units?.edges,
@@ -48,7 +50,7 @@ const faceBookGraphRent = async () => {
                   return info;
                 }
               );
-        
+
               return mappedData;
           }
         )
