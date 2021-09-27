@@ -42,7 +42,7 @@ Job.schedule("*/10 * * * * *", async () => {
     if (start - listingDate <= diffMinutes) {
       console.log("Found Sales");
  
-      sendSaleMail(list);
+      // sendSaleMail(list);
     }
   });
 
@@ -52,7 +52,7 @@ Job.schedule("*/10 * * * * *", async () => {
     if (start - listingDate <= diffMinutes) {
       console.log("Found Rent");
  
-      sendRentMail(list);
+      // sendRentMail(list);
     }
   });
 });
