@@ -40,7 +40,7 @@ Job.schedule("*/10 * * * * *", async () => {
     // console.log(start - listingDate)
     // console.log("date: ", listingDate, formaltime, start);
     if (start - listingDate <= diffMinutes) {
-      console.log("Found Sales");
+      // console.log("Found Sales");
  
       // sendSaleMail(list);
     }
@@ -50,7 +50,7 @@ Job.schedule("*/10 * * * * *", async () => {
   RentData.flat().forEach((list) => {
     const listingDate = Date.parse(list.date);
     if (start - listingDate <= diffMinutes) {
-      console.log("Found Rent");
+      // console.log("Found Rent");
  
       // sendRentMail(list);
     }
