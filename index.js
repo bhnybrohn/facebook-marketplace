@@ -41,7 +41,7 @@ Job.schedule("*/10 * * * * *", async () => {
     // console.log("date: ", listingDate, formaltime, start);
     if (start - listingDate <= diffMinutes) {
       console.log("Found Sales");
-      console.log(list);
+ 
       sendSaleMail(list);
     }
   });
@@ -51,7 +51,7 @@ Job.schedule("*/10 * * * * *", async () => {
     const listingDate = Date.parse(list.date);
     if (start - listingDate <= diffMinutes) {
       console.log("Found Rent");
-      console.log(list);
+ 
       sendRentMail(list);
     }
   });

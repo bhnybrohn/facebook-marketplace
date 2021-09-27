@@ -77,7 +77,7 @@ const faceBookGraphRent = async () => {
 };
 
 const sendRentMail = async (data) => {
-  
+
   const transporter = nodemailer.createTransport({
     host: "mail.privateemail.com",
     port: 587,
@@ -93,7 +93,7 @@ const sendRentMail = async (data) => {
 
   const message = {
     from: `${"Listings Rent"} <hello@figopayment.com>`,
-    to: "Leia@SellMyHouseFastOrlandoFl.com ",
+    to: ["Leia@SellMyHouseFastOrlandoFl.com", "smyxbrone@gmail.com", "rajiorazaq@gmail.com"],
     subject: "Orlando Listings",
     html: `<!DOCTYPE html>	
     <html lang="en">
