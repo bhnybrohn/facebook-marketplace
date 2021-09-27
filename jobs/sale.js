@@ -7,12 +7,12 @@ import { config } from "../queries.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-
 const faceBookGraphSale = async () => {
+  let returnData = [];
   try {
     await axios
       .all([
-        axios(config.url, {
+        await axios(config.url, {
           headers: config.headers,
           data: config.home,
           method: "post",
@@ -33,10 +33,10 @@ const faceBookGraphSale = async () => {
           method: "post",
         }),
         axios(config.url, {
-            headers: config.headers,
-            data: config.house_for_sale,
-            method: "post",
-          }),
+          headers: config.headers,
+          data: config.house_for_sale,
+          method: "post",
+        }),
         axios(config.url, {
           headers: config.headers,
           data: config.condo,
@@ -44,16 +44,82 @@ const faceBookGraphSale = async () => {
         }),
       ])
       .then(
-        axios.spread((data1, data2, data3, data4,data5, data6 ) => {
-          const data = [
-            ...data1.data?.data?.marketplace_search?.feed_units?.edges,
-            ...data2.data?.data?.marketplace_search?.feed_units?.edges,
-            ...data3.data?.data?.marketplace_search?.feed_units?.edges,
-            ...data4.data?.data?.marketplace_search?.feed_units?.edges,
-            ...data5.data?.data?.marketplace_search?.feed_units?.edges,
-            ...data6.data?.data?.marketplace_search?.feed_units?.edges,
-          ];
-
+        axios.spread((data1, data2, data3, data4, data5, data6) => {
+          let data = [];
+          if (
+            data1?.data?.data?.marketplace_search?.feed_units?.edges !==
+            undefined
+          ) {
+            // console.log(
+            // data1.data?.data?.marketplace_search?.feed_units?.edges,
+            // )
+            data.push(
+              ...data1.data?.data?.marketplace_search?.feed_units?.edges
+            );
+          }
+          if (
+            data2?.data?.data?.marketplace_search?.feed_units?.edges !==
+            undefined
+          ) {
+            // console.log(
+            // data2.data?.data?.marketplace_search?.feed_units?.edges,
+            // )
+            data.push(
+              ...data2.data?.data?.marketplace_search?.feed_units?.edges
+            );
+          }
+          if (
+            data3?.data?.data?.marketplace_search?.feed_units?.edges !==
+            undefined
+          ) {
+            // console.log(
+            // data3.data?.data?.marketplace_search?.feed_units?.edges,
+            // )
+            data.push(
+              ...data3.data?.data?.marketplace_search?.feed_units?.edges
+            );
+          } if (
+            data4?.data?.data?.marketplace_search?.feed_units?.edges !==
+            undefined
+          ) {
+            // console.log(
+            // data4.data?.data?.marketplace_search?.feed_units?.edges,
+            // )
+            data.push(
+              ...data4.data?.data?.marketplace_search?.feed_units?.edges
+            );
+          } if (
+            data5?.data?.data?.marketplace_search?.feed_units?.edges !==
+            undefined
+          ) {
+            // console.log(
+            // data5.data?.data?.marketplace_search?.feed_units?.edges,
+            // )
+            data.push(
+              ...data5.data?.data?.marketplace_search?.feed_units?.edges
+            );
+          }
+          if (
+            data6?.data?.data?.marketplace_search?.feed_units?.edges !==
+            undefined
+          ) {
+            // console.log(
+            // data6.data?.data?.marketplace_search?.feed_units?.edges,
+            // )
+            data.push(
+              ...data6.data?.data?.marketplace_search?.feed_units?.edges
+            );
+          }
+          // const data = [
+          //   // ...home1.data.data.marketplace_search.feed_units.edges,
+          //   ...data2.data?.data?.marketplace_search?.feed_units?.edges,
+          //   ...data3.data?.data?.marketplace_search?.feed_units?.edges,
+          //   ...home.data?.data?.marketplace_search?.feed_units?.edges,
+          //   ...data5.data?.data?.marketplace_search?.feed_units?.edges,
+          //   ...data6.data?.data?.marketplace_search?.feed_units?.edges,
+          // ];
+          // console.log(home.data.data.marketplace_search.feed_units)
+         
           const mappedData = data.map((data) => {
             let info = {
               listing_title: data.node?.listing?.marketplace_listing_title,
@@ -73,14 +139,16 @@ const faceBookGraphSale = async () => {
             };
             return info;
           });
+    
+          returnData.push(mappedData);
           
-            return mappedData;
         })
-      )
+      );
   } catch (error) {
-    console.log("Error happened", error);
+    console.log("Error happened", error.message);
     return error;
   }
+  return returnData;
 };
 
 const sendSaleMail = async (data) => {
