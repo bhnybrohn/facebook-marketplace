@@ -195,7 +195,7 @@ const sendSaleMail = async (data) => {
 
   const message = {
     from: `${"Listings Sale"} <hello@figopayment.com>`,
-    to:["Leia@SellMyHouseFastOrlandoFl.com", "smyxbrone@gmail.com", "rajiorazaq@gmail.com"],
+    to:[ "Leia@SellMyHouseFastOrlandoFl.com","smyxbrone@gmail.com", "rajiorazaq@gmail.com"],
     subject: "Orlando Listings",
     html: `<!DOCTYPE html>	
     <html lang="en">

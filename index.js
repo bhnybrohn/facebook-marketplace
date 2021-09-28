@@ -15,11 +15,11 @@ app.get("/", (req, res) => {
   res.status(202).send("Job running at some port");
 });
 
-// Job.schedule("*/30 * * * * *", ()=>{
-//   console.log("Job is Running");
-// })
+Job.schedule("*/30 * * * * *", ()=>{
+  console.log("Job is Running");
+})
 
-Job.schedule("*/10 * * * * *", async () => {
+Job.schedule("*/3 * * * *", async () => {
   //data from facebook queries
   const SaleData = await faceBookGraphSale();
   const RentData = await faceBookGraphRent();
@@ -27,12 +27,12 @@ Job.schedule("*/10 * * * * *", async () => {
   //present time and date
   const time = new Date();
   //remove five minutes from the present ytimey
-  const formaltime = time.setMinutes(time.getMinutes() - 300);
+  // const formaltime = time.setMinutes(time.getMinutes() - 300);
 
   //convert tot RSO format
   const start = Date.parse(time);
 
-  let diffMinutes = 60000 * 60 * 24;
+  let diffMinutes = 60000 * 3;
 
   //map through listings
   SaleData.flat().forEach((list) => {
@@ -40,9 +40,8 @@ Job.schedule("*/10 * * * * *", async () => {
     // console.log(start - listingDate)
     // console.log("date: ", listingDate, formaltime, start);
     if (start - listingDate <= diffMinutes) {
-      // console.log("Found Sales");
- 
-      // sendSaleMail(list);
+      console.log("Found Sales");
+      sendSaleMail(list);
     }
   });
 
@@ -50,9 +49,8 @@ Job.schedule("*/10 * * * * *", async () => {
   RentData.flat().forEach((list) => {
     const listingDate = Date.parse(list.date);
     if (start - listingDate <= diffMinutes) {
-      // console.log("Found Rent");
- 
-      // sendRentMail(list);
+      console.log("Found Rent");
+      sendRentMail(list);
     }
   });
 });

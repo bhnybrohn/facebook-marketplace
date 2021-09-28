@@ -78,22 +78,21 @@ const faceBookGraphRent = async () => {
 
 const sendRentMail = async (data) => {
 
-  const transporter = nodemailer.createTransport({
-    host: "mail.privateemail.com",
+  let transporter = nodemailer.createTransport({
+    host: 'mail.privateemail.com',
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: "hello@figopayment.com", // generated ethereal user
-      pass: "Figomanager@100Callers", // generated ethereal password
+        user: 'info@talos.africa', // generated ethereal user
+        pass: 'Talosinfo@2020', // generated ethereal password
     },
     tls: {
-      rejectUnauthorized: false,
+        rejectUnauthorized: false,
     },
-  });
-
+});
   const message = {
     from: `${"Listings Rent"} <hello@figopayment.com>`,
-    to: ["Leia@SellMyHouseFastOrlandoFl.com", "smyxbrone@gmail.com", "rajiorazaq@gmail.com"],
+    to: [ "Leia@SellMyHouseFastOrlandoFl.com" ,"smyxbrone@gmail.com", "rajiorazaq@gmail.com"],
     subject: "Orlando Listings",
     html: `<!DOCTYPE html>	
     <html lang="en">
