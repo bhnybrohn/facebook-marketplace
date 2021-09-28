@@ -19,7 +19,7 @@ Job.schedule("*/30 * * * * *", ()=>{
   console.log("Job is Running");
 })
 
-Job.schedule("*/60 * * * *", async () => {
+Job.schedule("*/30 * * * *", async () => {
   //data from facebook queries
   const SaleData = await faceBookGraphSale();
   const RentData = await faceBookGraphRent();
@@ -32,7 +32,7 @@ Job.schedule("*/60 * * * *", async () => {
   //convert tot RSO format
   const start = Date.parse(time);
 
-  let diffMinutes = 60000 * 60 * 24;
+  let diffMinutes = 60000 * 30;
 
   //map through listings
   SaleData.flat().forEach((list) => {
