@@ -31,7 +31,6 @@ Job.schedule("*/30 * * * *", async () => {
 
   //convert tot RSO format
   const start = Date.parse(time);
-
   let diffMinutes = 60000 * 30;
 
   //map through listings
