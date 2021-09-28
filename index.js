@@ -19,25 +19,26 @@ Job.schedule("*/30 * * * * *", ()=>{
   console.log("Job is Running");
 })
 
-Job.schedule("*/30 * * * *", async () => {
+Job.schedule("*/1 * * * *", async () => {
   //data from facebook queries
   const SaleData = await faceBookGraphSale();
   const RentData = await faceBookGraphRent();
   // console.log(SaleData.flat())
   //present time and date
+
   const time = new Date();
   //remove five minutes from the present ytimey
   // const formaltime = time.setMinutes(time.getMinutes() - 300);
 
   //convert tot RSO format
   const start = Date.parse(time);
-  let diffMinutes = 60000 * 30;
+  let diffMinutes = 60000 * 60;
 
   //map through listings
   SaleData.flat().forEach((list) => {
     const listingDate = Date.parse(list.date);
     // console.log(start - listingDate)
-    // console.log("date: ", listingDate, formaltime, start);
+    console.log("date: ", listingDate, formaltime, start);
     if (start - listingDate <= diffMinutes) {
       console.log("Found Sales");
       sendSaleMail(list);
