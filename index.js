@@ -15,11 +15,11 @@ app.get("/", (req, res) => {
   res.status(202).send("Job running at some port");
 });
 
-// Job.schedule("*/30 * * * * *", ()=>{
-//   console.log("Job is Running");
-// })
+Job.schedule("*/30 * * * * *", ()=>{
+  console.log("Job is Running");
+})
 
-Job.schedule("*/10 * * * * *", async () => {
+Job.schedule("*/3 * * * *", async () => {
   //data from facebook queries
   const SaleData = await faceBookGraphSale();
   const RentData = await faceBookGraphRent();
@@ -32,7 +32,7 @@ Job.schedule("*/10 * * * * *", async () => {
   //convert tot RSO format
   const start = Date.parse(time);
 
-  let diffMinutes = 60000 * 60 * 24;
+  let diffMinutes = 60000 * 3;
 
   //map through listings
   SaleData.flat().forEach((list) => {
@@ -42,7 +42,7 @@ Job.schedule("*/10 * * * * *", async () => {
     if (start - listingDate <= diffMinutes) {
       // console.log("Found Sales");
  
-      // sendSaleMail(list);
+       sendSaleMail(list);
     }
   });
 
@@ -52,7 +52,7 @@ Job.schedule("*/10 * * * * *", async () => {
     if (start - listingDate <= diffMinutes) {
       // console.log("Found Rent");
  
-      // sendRentMail(list);
+       sendRentMail(list);
     }
   });
 });
