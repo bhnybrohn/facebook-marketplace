@@ -9,6 +9,10 @@ dotenv.config();
 import { faceBookGraphSale, sendSaleMail } from "./jobs/sale.js";
 import { faceBookGraphRent, sendRentMail } from "./jobs/rent.js";
 
+import NodeCache from "node-cache" 
+const myCache = new NodeCache();
+
+
 app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
@@ -19,7 +23,7 @@ Job.schedule("*/30 * * * * *", ()=>{
   console.log("Job is Running");
 })
 
-Job.schedule("0 */5 * * * *", async () => {
+Job.schedule("0 */1 * * * *", async () => {
   //data from facebook queries
   const SaleData = await faceBookGraphSale();
   const RentData = await faceBookGraphRent();
@@ -30,16 +34,26 @@ Job.schedule("0 */5 * * * *", async () => {
 
   //convert tot RSO format
   const start = Date.parse(time);
-  let diffMinutes = 60000 * 5;
+  let diffMinutes = 60000 *120 ;
 
   let runOnce = false;
 
+  const saleLog =  SaleData.flat().map((data)=> {return data})
+  const rentLog =  RentData.flat().map((data)=> {return data})
+
+let setListing = myCache.mset([
+    {key: "sales", val: saleLog,  ttl: 300},
+    {key: "rent", val: rentLog, ttl: 300},
+])
+console.log(setListing)
+  
 // function helloOnce() {
 //   if (!saidHello) sayHello();
 // }
   //map through listings
 
   SaleData.flat().forEach((list) => {
+
     const listingDate = Date.parse(list.date);
     // runFunction = true
     if (start - listingDate <= diffMinutes) {

@@ -166,6 +166,7 @@ const sendSaleMail = async (data) => {
       rejectUnauthorized: false,
     },
   });
+  
   // let messages = []
   // messages.push(data)
   // message.forEach((data)=>{
