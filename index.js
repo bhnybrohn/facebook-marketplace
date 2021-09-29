@@ -32,7 +32,7 @@ Job.schedule("*/1 * * * *", async () => {
 
   //convert tot RSO format
   const start = Date.parse(time);
-  let diffMinutes = 60000 * 60 * 24;
+  let diffMinutes = 60000 * 60 * 20;
 
   //map through listings
   SaleData.flat().forEach((list) => {
