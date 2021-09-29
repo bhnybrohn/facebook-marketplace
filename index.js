@@ -32,13 +32,13 @@ Job.schedule("*/1 * * * *", async () => {
 
   //convert tot RSO format
   const start = Date.parse(time);
-  let diffMinutes = 60000 * 60;
+  let diffMinutes = 60000 * 60 * 24;
 
   //map through listings
   SaleData.flat().forEach((list) => {
     const listingDate = Date.parse(list.date);
     // console.log(start - listingDate)
-    console.log("date: ", listingDate, formaltime, start);
+    // console.log("date: ", listingDate, formaltime, start);
     if (start - listingDate <= diffMinutes) {
       console.log("Found Sales");
       sendSaleMail(list);
@@ -48,6 +48,7 @@ Job.schedule("*/1 * * * *", async () => {
   //map through listings
   RentData.flat().forEach((list) => {
     const listingDate = Date.parse(list.date);
+    console.log("date: ", listingDate, formaltime, start);
     if (start - listingDate <= diffMinutes) {
       console.log("Found Rent");
       sendRentMail(list);
