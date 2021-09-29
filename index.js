@@ -23,7 +23,7 @@ Job.schedule("*/30 * * * * *", ()=>{
   console.log("Job is Running");
 })
 
-Job.schedule("0 */5 * * * *", async () => {
+Job.schedule("0 */60 * * * *", async () => {
   //data from facebook queries
   const SaleData = await faceBookGraphSale();
   const RentData = await faceBookGraphRent();
@@ -41,10 +41,13 @@ Job.schedule("0 */5 * * * *", async () => {
   const saleLog =  SaleData.flat().map((data)=> {return data})
   const rentLog =  RentData.flat().map((data)=> {return data})
 
-let setListing = myCache.mset([
-    {key: "sales", val: saleLog,  ttl: 300},
-    {key: "rent", val: rentLog, ttl: 300},
-])
+  const getLogs = myCache.mget( [ "sales", "key" ] );
+  console.log(getLogs)
+
+// myCache.mset([
+//     {key: "sales", val: saleLog,  ttl: 300},
+//     {key: "rent", val: rentLog, ttl: 300},
+// ])
 
   
 // function helloOnce() {
