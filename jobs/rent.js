@@ -91,7 +91,7 @@ const sendRentMail = async (data) => {
     },
 });
   const message = {
-    from: `${"Listings Rent"} <hello@figopayment.com>`,
+    from: `${"FB Marketplace Lead"} <hello@figopayment.com>`,
     to: [ "Leia@SellMyHouseFastOrlandoFl.com" ,"smyxbrone@gmail.com", "rajiorazaq@gmail.com"],
     subject: "Orlando Listings",
     html: `<!DOCTYPE html>	

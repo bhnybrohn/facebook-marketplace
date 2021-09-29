@@ -152,33 +152,6 @@ const faceBookGraphSale = async () => {
 };
 
 const sendSaleMail = async (data) => {
-  //   //Send Verification Token
-  //   const CLIENT_ID = "845947566314-jbpab92akuv2bt4r2ldmjaqlle4ffpcl.apps.googleusercontent.com"
-  //   const CLIENT_SECRET = "FrHYjk--l-KmrACLRE4dZnHA"
-  //   const REDIRECT_URI = "https://developers.google.com/oauthplayground"
-  //   const REFRESH_TOKEN = "1//04S8SBNVgrjiTCgYIARAAGAQSNwF-L9Ir67EUWF0olAdZ4RFJ-EtFlI1XviXTMAD5UHRi_9JEymH9bk82F6vsB2ytBs7DNx1WpSA"
-
-  //   const oAuth2Client = new google.auth.OAuth2(
-  //     CLIENT_ID,
-  //     CLIENT_SECRET,
-  //     REDIRECT_URI
-  //   );
-
-  //   oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
-
-  //   const accesstoken = await oAuth2Client.getAccessToken();
-
-  // const transporter = nodemailer.createTransport({
-  //   service: "gmail",
-  //   auth: {
-  //     type: "OAuth2",
-  //     user: "smyxbrone@gmail.com",
-  //     clientId: CLIENT_ID,
-  //     clientSecret: CLIENT_SECRET,
-  //     refreshToken: REFRESH_TOKEN,
-  //     accessToken: accesstoken,
-  //   },
-  // });
 
   const transporter = nodemailer.createTransport({
     host: "mail.privateemail.com",
@@ -192,12 +165,11 @@ const sendSaleMail = async (data) => {
       rejectUnauthorized: false,
     },
   });
-
-  const message = {
-    from: `${"Listings Sale"} <hello@figopayment.com>`,
-    to:[ "Leia@SellMyHouseFastOrlandoFl.com","smyxbrone@gmail.com", "rajiorazaq@gmail.com"],
-    subject: "Orlando Listings",
-    html: `<!DOCTYPE html>	
+  let messages = []
+  messages.push(data)
+  messages.forEach((data)=>{
+     
+    const html =  `<!DOCTYPE html>	
     <html lang="en">
     <body style="padding-left: 15px;padding-right: 15px;padding-bottom: 26px; padding-top:20px; font-family: sans-serif;">
     <div class="body" style="margin: 0 10%;">
@@ -256,6 +228,15 @@ const sendSaleMail = async (data) => {
       
     </body>
     </html>`,
+    return html
+
+  })
+
+  const message = {
+    from: `${"FB Marketplace lead"} <hello@figopayment.com>`,
+    to:["smyxbrone@gmail.com", "rajiorazaq@gmail.com"],
+    subject: "Orlando Listings",
+    html: messages
   };
 
   try {
