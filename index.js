@@ -49,7 +49,6 @@ Job.schedule("*/60 * * * *", async () => {
 //     {key: "rent", val: rentLog, ttl: 300},
 // ])
 
-  
 // function helloOnce() {
 //   if (!saidHello) sayHello();
 // }
@@ -61,18 +60,16 @@ Job.schedule("*/60 * * * *", async () => {
     // runFunction = true
     if (start - listingDate <= diffMinutes) {
       console.log("Found Sales");
-      // sendSaleMail(list);
+      sendSaleMail(list);
     }
   });
-
-
   //map through listings
   RentData.flat().forEach((list) => {
     const listingDate = Date.parse(list.date);
     // console.log("date: ", listingDate, formaltime, start);
     if (start - listingDate <= diffMinutes) {
       console.log("Found Rent");
-      // sendRentMail(list);
+      sendRentMail(list);
     }
   });
 });
