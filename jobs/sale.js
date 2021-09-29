@@ -110,16 +110,7 @@ const faceBookGraphSale = async () => {
               ...data6.data?.data?.marketplace_search?.feed_units?.edges
             );
           }
-          // const data = [
-          //   // ...home1.data.data.marketplace_search.feed_units.edges,
-          //   ...data2.data?.data?.marketplace_search?.feed_units?.edges,
-          //   ...data3.data?.data?.marketplace_search?.feed_units?.edges,
-          //   ...home.data?.data?.marketplace_search?.feed_units?.edges,
-          //   ...data5.data?.data?.marketplace_search?.feed_units?.edges,
-          //   ...data6.data?.data?.marketplace_search?.feed_units?.edges,
-          // ];
-          // console.log(home.data.data.marketplace_search.feed_units)
-         
+        
           const mappedData = data.map((data) => {
             let info = {
               listing_title: data.node?.listing?.marketplace_listing_title,
@@ -167,8 +158,7 @@ const sendSaleMail = async (data) => {
   });
   let messages = []
   messages.push(data)
-  messages.forEach((data)=>{
-     
+  messages.map((data)=>{
     const html =  `<!DOCTYPE html>	
     <html lang="en">
     <body style="padding-left: 15px;padding-right: 15px;padding-bottom: 26px; padding-top:20px; font-family: sans-serif;">
@@ -227,11 +217,10 @@ const sendSaleMail = async (data) => {
 
       
     </body>
-    </html>`,
+    </html>`
     return html
-
-  })
-
+  }
+ )
   const message = {
     from: `${"FB Marketplace lead"} <hello@figopayment.com>`,
     to:["smyxbrone@gmail.com", "rajiorazaq@gmail.com"],
