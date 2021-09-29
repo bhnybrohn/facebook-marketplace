@@ -23,7 +23,7 @@ Job.schedule("*/30 * * * * *", ()=>{
   console.log("Job is Running");
 })
 
-Job.schedule("0 */60 * * * *", async () => {
+Job.schedule("*/60 * * * *", async () => {
   //data from facebook queries
   const SaleData = await faceBookGraphSale();
   const RentData = await faceBookGraphRent();
@@ -34,15 +34,15 @@ Job.schedule("0 */60 * * * *", async () => {
 
   //convert tot RSO format
   const start = Date.parse(time);
-  let diffMinutes = 60000 * 120 ;
+  let diffMinutes = 60000 * 60 ;
 
   let runOnce = false;
 
-  const saleLog =  SaleData.flat().map((data)=> {return data})
-  const rentLog =  RentData.flat().map((data)=> {return data})
+  // const saleLog =  SaleData.flat().map((data)=> {return data})
+  // const rentLog =  RentData.flat().map((data)=> {return data})
 
-  const getLogs = myCache.mget( [ "sales", "key" ] );
-  console.log(getLogs)
+  // const getLogs = myCache.mget( [ "sales", "rent" ] );
+  // console.log("logs", getLogs)
 
 // myCache.mset([
 //     {key: "sales", val: saleLog,  ttl: 300},
@@ -61,7 +61,7 @@ Job.schedule("0 */60 * * * *", async () => {
     // runFunction = true
     if (start - listingDate <= diffMinutes) {
       console.log("Found Sales");
-      sendSaleMail(list);
+      // sendSaleMail(list);
     }
   });
 
@@ -72,7 +72,7 @@ Job.schedule("0 */60 * * * *", async () => {
     // console.log("date: ", listingDate, formaltime, start);
     if (start - listingDate <= diffMinutes) {
       console.log("Found Rent");
-      sendRentMail(list);
+      // sendRentMail(list);
     }
   });
 });
