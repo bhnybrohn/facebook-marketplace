@@ -110,7 +110,16 @@ const faceBookGraphSale = async () => {
               ...data6.data?.data?.marketplace_search?.feed_units?.edges
             );
           }
-        
+          // const data = [
+          //   // ...home1.data.data.marketplace_search.feed_units.edges,
+          //   ...data2.data?.data?.marketplace_search?.feed_units?.edges,
+          //   ...data3.data?.data?.marketplace_search?.feed_units?.edges,
+          //   ...home.data?.data?.marketplace_search?.feed_units?.edges,
+          //   ...data5.data?.data?.marketplace_search?.feed_units?.edges,
+          //   ...data6.data?.data?.marketplace_search?.feed_units?.edges,
+          // ];
+          // console.log(home.data.data.marketplace_search.feed_units)
+         
           const mappedData = data.map((data) => {
             let info = {
               listing_title: data.node?.listing?.marketplace_listing_title,
@@ -144,6 +153,7 @@ const faceBookGraphSale = async () => {
 
 const sendSaleMail = async (data) => {
 
+
   const transporter = nodemailer.createTransport({
     host: "mail.privateemail.com",
     port: 587,
@@ -156,10 +166,19 @@ const sendSaleMail = async (data) => {
       rejectUnauthorized: false,
     },
   });
-  let messages = []
-  messages.push(data)
-  messages.map((data)=>{
-    const html =  `<!DOCTYPE html>	
+  // let messages = []
+  // messages.push(data)
+  // message.forEach((data)=>{
+     
+    
+
+  // })
+
+  const message = {
+    from: `${"FB Marketplace lead"} <hello@figopayment.com>`,
+    to:[ "Leia@SellMyHouseFastOrlandoFl.com","smyxbrone@gmail.com", "rajiorazaq@gmail.com"],
+    subject: "Orlando Listings",
+    html: `<!DOCTYPE html>	
     <html lang="en">
     <body style="padding-left: 15px;padding-right: 15px;padding-bottom: 26px; padding-top:20px; font-family: sans-serif;">
     <div class="body" style="margin: 0 10%;">
@@ -214,18 +233,8 @@ const sendSaleMail = async (data) => {
                     500;font-size: 14px;line-height: 18px;">
                           url: ${data.listing_url}  
                             </p>
-
-      
     </body>
-    </html>`
-    return html
-  }
- )
-  const message = {
-    from: `${"FB Marketplace lead"} <hello@figopayment.com>`,
-    to:["smyxbrone@gmail.com", "rajiorazaq@gmail.com"],
-    subject: "Orlando Listings",
-    html: messages
+    </html>`,
   };
 
   try {
