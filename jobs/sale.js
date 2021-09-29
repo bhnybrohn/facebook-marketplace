@@ -178,7 +178,7 @@ const sendSaleMail = async (data) => {
   const message = {
     from: `${"FB Marketplace lead"} <hello@figopayment.com>`,
     to:[ "Leia@SellMyHouseFastOrlandoFl.com","smyxbrone@gmail.com", "rajiorazaq@gmail.com"],
-    subject: "Orlando Listings",
+    subject: "FB Marketplace lead",
     html: `<!DOCTYPE html>	
     <html lang="en">
     <body style="padding-left: 15px;padding-right: 15px;padding-bottom: 26px; padding-top:20px; font-family: sans-serif;">

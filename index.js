@@ -34,7 +34,7 @@ Job.schedule("0 */1 * * * *", async () => {
 
   //convert tot RSO format
   const start = Date.parse(time);
-  let diffMinutes = 60000 *120 ;
+  let diffMinutes = 60000 * 5 ;
 
   let runOnce = false;
 
