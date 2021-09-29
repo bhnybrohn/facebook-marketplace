@@ -34,7 +34,7 @@ Job.schedule("0 */5 * * * *", async () => {
 
   //convert tot RSO format
   const start = Date.parse(time);
-  let diffMinutes = 60000 * 5 ;
+  let diffMinutes = 60000 * 120 ;
 
   let runOnce = false;
 
@@ -45,7 +45,7 @@ let setListing = myCache.mset([
     {key: "sales", val: saleLog,  ttl: 300},
     {key: "rent", val: rentLog, ttl: 300},
 ])
-console.log(setListing)
+
   
 // function helloOnce() {
 //   if (!saidHello) sayHello();
