@@ -28,7 +28,7 @@ const faceBookGraphRent = async () => {
           // ...data2.data.data?.marketplace_search?.feed_units?.edges,
         ];
         if (
-          data1?.data?.data?.marketplace_search?.feed_units?.edges !==
+          data1.data?.data?.marketplace_search?.feed_units?.edges !==
           undefined
         ) {
           // console.log(
@@ -39,7 +39,7 @@ const faceBookGraphRent = async () => {
           );
         }
         if (
-          data2?.data?.data?.marketplace_search?.feed_units?.edges !==
+          data2.data?.data?.marketplace_search?.feed_units?.edges !==
           undefined
         ) {
           // console.log(

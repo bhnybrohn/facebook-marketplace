@@ -47,7 +47,7 @@ const faceBookGraphSale = async () => {
         axios.spread((data1, data2, data3, data4, data5, data6) => {
           let data = [];
           if (
-            data1?.data?.data?.marketplace_search?.feed_units?.edges !==
+            data1.data?.data?.marketplace_search?.feed_units?.edges !==
             undefined
           ) {
             // console.log(
@@ -58,7 +58,7 @@ const faceBookGraphSale = async () => {
             );
           }
           if (
-            data2?.data?.data?.marketplace_search?.feed_units?.edges !==
+            data2.data?.data?.marketplace_search?.feed_units?.edges !==
             undefined
           ) {
             // console.log(
@@ -69,7 +69,7 @@ const faceBookGraphSale = async () => {
             );
           }
           if (
-            data3?.data?.data?.marketplace_search?.feed_units?.edges !==
+            data3.data?.data?.marketplace_search?.feed_units?.edges !==
             undefined
           ) {
             // console.log(
@@ -79,7 +79,7 @@ const faceBookGraphSale = async () => {
               ...data3.data?.data?.marketplace_search?.feed_units?.edges
             );
           } if (
-            data4?.data?.data?.marketplace_search?.feed_units?.edges !==
+            data4.data?.data?.marketplace_search?.feed_units?.edges !==
             undefined
           ) {
             // console.log(
@@ -89,7 +89,7 @@ const faceBookGraphSale = async () => {
               ...data4.data?.data?.marketplace_search?.feed_units?.edges
             );
           } if (
-            data5?.data?.data?.marketplace_search?.feed_units?.edges !==
+            data5.data?.data?.marketplace_search?.feed_units?.edges !==
             undefined
           ) {
             // console.log(
@@ -100,7 +100,7 @@ const faceBookGraphSale = async () => {
             );
           }
           if (
-            data6?.data?.data?.marketplace_search?.feed_units?.edges !==
+            data6.data?.data?.marketplace_search?.feed_units?.edges !==
             undefined
           ) {
             // console.log(
