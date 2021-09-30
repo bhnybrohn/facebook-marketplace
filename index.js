@@ -31,7 +31,6 @@ Job.schedule("*/60 * * * *", async () => {
   console.log("Job Ran")
   //present time and date
   const time = new Date();
-
   //convert tot RSO format
   const start = Date.parse(time);
   let diffMinutes = 60000 * 60 ;
