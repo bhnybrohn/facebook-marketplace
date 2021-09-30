@@ -24,46 +24,46 @@ const faceBookGraphRent = async () => {
     .then(
       axios.spread((data1, data2) => {
         const data = [
-          // ...data1.data.data?.marketplace_search?.feed_units?.edges,
-          // ...data2.data.data?.marketplace_search?.feed_units?.edges,
+          // ...data1.data.data.marketplace_search.feed_units.edges,
+          // ...data2.data.data.marketplace_search.feed_units.edges,
         ];
         if (
-          data1.data?.data?.marketplace_search?.feed_units?.edges !==
+          data1.data.data.marketplace_search.feed_units.edges !==
           undefined
         ) {
           // console.log(
-          // data1.data?.data?.marketplace_search?.feed_units?.edges,
+          // data1.data.data.marketplace_search.feed_units.edges,
           // )
           data.push(
-            ...data1.data?.data?.marketplace_search?.feed_units?.edges
+            ...data1.data.data.marketplace_search.feed_units.edges
           );
         }
         if (
-          data2.data?.data?.marketplace_search?.feed_units?.edges !==
+          data2.data.data.marketplace_search.feed_units.edges !==
           undefined
         ) {
           // console.log(
-          // data2.data?.data?.marketplace_search?.feed_units?.edges,
+          // data2.data.data.marketplace_search.feed_units.edges,
           // )
           data.push(
-            ...data2.data?.data?.marketplace_search?.feed_units?.edges
+            ...data2.data.data.marketplace_search.feed_units.edges
           );
         }
         const mappedData = data.map((data) => {
           let info = {
-            listing_title: data?.node?.listing?.marketplace_listing_title,
-            sold: data?.node?.listing?.is_live,
-            pending: data?.node?.listing?.is_pending,
-            sold: data?.node?.listing?.is_sold,
-            image_1: data?.node?.listing?.primary_listing_photo,
-            location: data?.node?.listing?.location,
-            listing_url: data?.node?.listing?.share_uri,
-            seller: data?.node?.listing?.marketplace_listing_seller,
-            agent: data?.node?.listing?.real_estate_listing_agent,
-            listed_by: data?.node?.listing?.listed_by,
-            price: data?.node?.listing?.formatted_price,
+            listing_title: data.node.listing.marketplace_listing_title,
+            sold: data.node.listing.is_live,
+            pending: data.node.listing.is_pending,
+            sold: data.node.listing.is_sold,
+            image_1: data.node.listing.primary_listing_photo,
+            location: data.node.listing.location,
+            listing_url: data.node.listing.share_uri,
+            seller: data.node.listing.marketplace_listing_seller,
+            agent: data.node.listing.real_estate_listing_agent,
+            listed_by: data.node.listing.listed_by,
+            price: data.node.listing.formatted_price,
             date: new Date(
-              data?.node?.listing?.creation_time * 1000
+              data.node.listing.creation_time * 1000
             ).toISOString(),
           };
           return info;

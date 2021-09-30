@@ -47,94 +47,94 @@ const faceBookGraphSale = async () => {
         axios.spread((data1, data2, data3, data4, data5, data6) => {
           let data = [];
           if (
-            data1.data?.data?.marketplace_search?.feed_units?.edges !==
+            data1.data.data.marketplace_search.feed_units.edges !==
             undefined
           ) {
             // console.log(
-            // data1.data?.data?.marketplace_search?.feed_units?.edges,
+            // data1.data.data.marketplace_search.feed_units.edges,
             // )
             data.push(
-              ...data1.data?.data?.marketplace_search?.feed_units?.edges
+              ...data1.data.data.marketplace_search.feed_units.edges
             );
           }
           if (
-            data2.data?.data?.marketplace_search?.feed_units?.edges !==
+            data2.data.data.marketplace_search.feed_units.edges !==
             undefined
           ) {
             // console.log(
-            // data2.data?.data?.marketplace_search?.feed_units?.edges,
+            // data2.data.data.marketplace_search.feed_units.edges,
             // )
             data.push(
-              ...data2.data?.data?.marketplace_search?.feed_units?.edges
+              ...data2.data.data.marketplace_search.feed_units.edges
             );
           }
           if (
-            data3.data?.data?.marketplace_search?.feed_units?.edges !==
+            data3.data.data.marketplace_search.feed_units.edges !==
             undefined
           ) {
             // console.log(
-            // data3.data?.data?.marketplace_search?.feed_units?.edges,
+            // data3.data.data.marketplace_search.feed_units.edges,
             // )
             data.push(
-              ...data3.data?.data?.marketplace_search?.feed_units?.edges
+              ...data3.data.data.marketplace_search.feed_units.edges
             );
           } if (
-            data4.data?.data?.marketplace_search?.feed_units?.edges !==
+            data4.data.data.marketplace_search.feed_units.edges !==
             undefined
           ) {
             // console.log(
-            // data4.data?.data?.marketplace_search?.feed_units?.edges,
+            // data4.data.data.marketplace_search.feed_units.edges,
             // )
             data.push(
-              ...data4.data?.data?.marketplace_search?.feed_units?.edges
+              ...data4.data.data.marketplace_search.feed_units.edges
             );
           } if (
-            data5.data?.data?.marketplace_search?.feed_units?.edges !==
+            data5.data.data.marketplace_search.feed_units.edges !==
             undefined
           ) {
             // console.log(
-            // data5.data?.data?.marketplace_search?.feed_units?.edges,
+            // data5.data.data.marketplace_search.feed_units.edges,
             // )
             data.push(
-              ...data5.data?.data?.marketplace_search?.feed_units?.edges
+              ...data5.data.data.marketplace_search.feed_units.edges
             );
           }
           if (
-            data6.data?.data?.marketplace_search?.feed_units?.edges !==
+            data6.data.data.marketplace_search.feed_units.edges !==
             undefined
           ) {
             // console.log(
-            // data6.data?.data?.marketplace_search?.feed_units?.edges,
+            // data6.data.data.marketplace_search.feed_units.edges,
             // )
             data.push(
-              ...data6.data?.data?.marketplace_search?.feed_units?.edges
+              ...data6.data.data.marketplace_search.feed_units.edges
             );
           }
           // const data = [
           //   // ...home1.data.data.marketplace_search.feed_units.edges,
-          //   ...data2.data?.data?.marketplace_search?.feed_units?.edges,
-          //   ...data3.data?.data?.marketplace_search?.feed_units?.edges,
-          //   ...home.data?.data?.marketplace_search?.feed_units?.edges,
-          //   ...data5.data?.data?.marketplace_search?.feed_units?.edges,
-          //   ...data6.data?.data?.marketplace_search?.feed_units?.edges,
+          //   ...data2.data.data.marketplace_search.feed_units.edges,
+          //   ...data3.data.data.marketplace_search.feed_units.edges,
+          //   ...home.data.data.marketplace_search.feed_units.edges,
+          //   ...data5.data.data.marketplace_search.feed_units.edges,
+          //   ...data6.data.data.marketplace_search.feed_units.edges,
           // ];
           // console.log(home.data.data.marketplace_search.feed_units)
          
           const mappedData = data.map((data) => {
             let info = {
-              listing_title: data.node?.listing?.marketplace_listing_title,
-              sold: data.node?.listing?.is_live,
-              pending: data.node?.listing?.is_pending,
-              sold: data.node?.listing?.is_sold,
-              image_1: data.node?.listing?.primary_listing_photo,
-              location: data.node?.listing?.location,
-              listing_url: data.node?.listing?.share_uri,
-              seller: data.node?.listing?.marketplace_listing_seller,
-              agent: data.node?.listing?.real_estate_listing_agent,
-              listed_by: data.node?.listing?.listed_by,
-              price: data.node?.listing?.formatted_price,
+              listing_title: data.node.listing.marketplace_listing_title,
+              sold: data.node.listing.is_live,
+              pending: data.node.listing.is_pending,
+              sold: data.node.listing.is_sold,
+              image_1: data.node.listing.primary_listing_photo,
+              location: data.node.listing.location,
+              listing_url: data.node.listing.share_uri,
+              seller: data.node.listing.marketplace_listing_seller,
+              agent: data.node.listing.real_estate_listing_agent,
+              listed_by: data.node.listing.listed_by,
+              price: data.node.listing.formatted_price,
               date: new Date(
-                data.node?.listing?.creation_time * 1000
+                data.node.listing.creation_time * 1000
               ).toISOString(),
             };
             return info;
